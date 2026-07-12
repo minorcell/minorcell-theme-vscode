@@ -6,6 +6,11 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+const icon = fs.readFileSync(path.join(root, manifest.icon));
+
+assert.equal(icon.subarray(1, 4).toString('ascii'), 'PNG');
+assert.ok(icon.readUInt32BE(16) >= 128, 'icon width must be at least 128px');
+assert.ok(icon.readUInt32BE(20) >= 128, 'icon height must be at least 128px');
 
 assert.equal(manifest.contributes.themes.length, 2);
 assert.deepEqual(

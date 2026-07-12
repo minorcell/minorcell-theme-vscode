@@ -1,6 +1,7 @@
 .git/**
 .vscode/**
 node_modules/**
+assets/icon-source.svg
 scripts/**
 test/**
 *.vsix

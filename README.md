@@ -1,5 +1,9 @@
 # Minorcell Theme
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/minorcell/minorcell-theme-vscode/main/assets/icon.png" alt="Minorcell Theme logo" width="128" height="128">
+</p>
+
 A minimal VS Code theme with matching dark and light variants, automatic system
 appearance switching, and editable color settings.
 

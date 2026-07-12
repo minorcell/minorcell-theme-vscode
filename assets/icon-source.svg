@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>Minorcell Theme</title>
+  <rect x="8" y="8" width="240" height="240" rx="28" fill="#202020"/>
+  <defs>
+    <pattern id="light-cells" x="29" y="29" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" rx="1.5" fill="#f2f4f7"/>
+    </pattern>
+    <pattern id="accent-cells" x="29" y="29" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" rx="1.5" fill="#56b6c2"/>
+    </pattern>
+  </defs>
+  <rect x="29" y="29" width="38" height="198" fill="url(#light-cells)"/>
+  <rect x="189" y="29" width="38" height="198" fill="url(#light-cells)"/>
+  <rect x="69" y="29" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="149" y="29" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="79" y="49" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="139" y="49" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="89" y="69" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="129" y="69" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="99" y="89" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="119" y="89" width="38" height="18" fill="url(#accent-cells)"/>
+  <rect x="109" y="109" width="38" height="18" fill="url(#accent-cells)"/>
+</svg>

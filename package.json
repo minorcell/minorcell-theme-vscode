@@ -2,8 +2,9 @@
   "name": "minorcell-theme",
   "displayName": "Minorcell Theme",
   "description": "A minimal, customizable VS Code theme that follows the operating system appearance.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "minorcell",
+  "icon": "assets/icon.png",
   "license": "MIT",
   "repository": {
     "type": "git",
