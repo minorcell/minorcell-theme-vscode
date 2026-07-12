@@ -13,6 +13,7 @@ MIT license is preserved in `THIRD_PARTY_NOTICES.md`.
 - `Minorcell Light`, designed as its light counterpart
 - automatic light/dark switching through VS Code's native system appearance support
 - native Settings UI controls for interface and syntax colors
+- switches for borders and shadows, enabled by default
 - live updates without reloading the editor
 - commands to open settings, configure system sync, and reset custom colors
 
@@ -32,6 +33,10 @@ Open the Command Palette and run `Minorcell Theme: Open Theme Settings` to edit
 the dark and light palettes. Only colors you explicitly change are written to
 VS Code's theme-specific color customizations. Existing customizations for other
 themes are preserved.
+
+In the settings panel, toggle `Appearance: Borders` and `Appearance: Shadows`
+to remove interface decoration from both theme variants. Disabling borders also
+reduces visible keyboard focus feedback.
 
 Set `Minorcell Theme: Follow System` to `false` to stop automatic appearance
 switching. Run `Minorcell Theme: Configure System Theme Sync` to restore the

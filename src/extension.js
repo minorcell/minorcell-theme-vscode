@@ -6,6 +6,7 @@ const {
   OWNED_TOKEN_KEYS,
   OWNED_WORKBENCH_KEYS,
   THEME_LABELS,
+  buildAppearanceOverrides,
   buildOverrides,
   mergeSemanticSection,
   mergeThemeSection,
@@ -45,9 +46,14 @@ async function synchronizeColors() {
   let semantic = rootConfiguration.inspect(
     'editor.semanticTokenColorCustomizations'
   )?.globalValue;
+  const appearanceOverrides = buildAppearanceOverrides({
+    borders: themeConfiguration.get('appearance.borders', true),
+    shadows: themeConfiguration.get('appearance.shadows', true)
+  });
 
   for (const variant of Object.keys(THEME_LABELS)) {
     const overrides = buildOverrides(readExplicitColors(themeConfiguration, variant));
+    Object.assign(overrides.workbench, appearanceOverrides);
     const label = THEME_LABELS[variant];
 
     workbench = mergeThemeSection(
@@ -129,6 +135,7 @@ async function activate(context) {
       }
 
       if (
+        event.affectsConfiguration('minorcellTheme.appearance') ||
         event.affectsConfiguration('minorcellTheme.dark') ||
         event.affectsConfiguration('minorcellTheme.light')
       ) {

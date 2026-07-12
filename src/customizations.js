@@ -19,6 +19,57 @@ const COLOR_ROLES = [
   'type'
 ];
 
+const BORDER_COLOR_KEYS = [
+  'activityBar.border',
+  'checkbox.border',
+  'debugExceptionWidget.border',
+  'debugToolBar.border',
+  'diffEditor.border',
+  'dropdown.border',
+  'editor.findMatchBorder',
+  'editor.findMatchHighlightBorder',
+  'editor.findRangeHighlightBorder',
+  'editor.lineHighlightBorder',
+  'editor.rangeHighlightBorder',
+  'editor.selectionHighlightBorder',
+  'editorBracketMatch.border',
+  'editorError.border',
+  'editorGroup.border',
+  'editorHoverWidget.border',
+  'editorInfo.border',
+  'editorOverviewRuler.border',
+  'editorSuggestWidget.border',
+  'editorWarning.border',
+  'editorWidget.border',
+  'editorWidget.resizeBorder',
+  'focusBorder',
+  'input.border',
+  'inputOption.activeBorder',
+  'listFilterWidget.noMatchesOutline',
+  'menu.border',
+  'menu.selectionBorder',
+  'notificationCenter.border',
+  'notificationToast.border',
+  'notifications.border',
+  'panel.border',
+  'panelSection.border',
+  'panelTitle.activeBorder',
+  'peekView.border',
+  'peekViewEditor.matchHighlightBorder',
+  'pickerGroup.border',
+  'sideBar.border',
+  'sideBarSectionHeader.border',
+  'statusBar.border',
+  'tab.activeBorder',
+  'tab.activeBorderTop',
+  'tab.border',
+  'tab.hoverBorder',
+  'terminal.border',
+  'titleBar.border'
+];
+
+const SHADOW_COLOR_KEYS = ['scrollbar.shadow', 'widget.shadow'];
+
 const WORKBENCH_ROLE_MAP = {
   background: [
     'editor.background',
@@ -74,7 +125,11 @@ const SEMANTIC_ROLE_MAP = {
   type: ['class', 'enum', 'interface', 'struct', 'type']
 };
 
-const OWNED_WORKBENCH_KEYS = Object.values(WORKBENCH_ROLE_MAP).flat();
+const OWNED_WORKBENCH_KEYS = [
+  ...Object.values(WORKBENCH_ROLE_MAP).flat(),
+  ...BORDER_COLOR_KEYS,
+  ...SHADOW_COLOR_KEYS
+];
 const OWNED_TOKEN_KEYS = Object.values(TOKEN_ROLE_MAP);
 const OWNED_SEMANTIC_KEYS = Object.values(SEMANTIC_ROLE_MAP).flat();
 
@@ -112,6 +167,24 @@ function buildOverrides(colors) {
   }
 
   return { workbench, tokens, semantic };
+}
+
+function buildAppearanceOverrides({ borders, shadows }) {
+  const workbench = {};
+
+  if (!borders) {
+    for (const key of BORDER_COLOR_KEYS) {
+      workbench[key] = '#00000000';
+    }
+  }
+
+  if (!shadows) {
+    for (const key of SHADOW_COLOR_KEYS) {
+      workbench[key] = '#00000000';
+    }
+  }
+
+  return workbench;
 }
 
 function mergeThemeSection(current, themeLabel, ownedKeys, nextValues) {
@@ -160,10 +233,13 @@ function mergeSemanticSection(current, themeLabel, nextRules) {
 }
 
 module.exports = {
+  BORDER_COLOR_KEYS,
   COLOR_ROLES,
   OWNED_TOKEN_KEYS,
   OWNED_WORKBENCH_KEYS,
+  SHADOW_COLOR_KEYS,
   THEME_LABELS,
+  buildAppearanceOverrides,
   buildOverrides,
   mergeSemanticSection,
   mergeThemeSection,

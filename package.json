@@ -2,7 +2,7 @@
   "name": "minorcell-theme",
   "displayName": "Minorcell Theme",
   "description": "A minimal, customizable VS Code theme that follows the operating system appearance.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "minorcell",
   "license": "MIT",
   "repository": {
@@ -69,6 +69,20 @@
           "scope": "application",
           "order": 1,
           "description": "Automatically use Minorcell Light or Minorcell Dark when the operating system appearance changes."
+        },
+        "minorcellTheme.appearance.borders": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "order": 2,
+          "description": "Show borders and focus outlines in both Minorcell themes. Turning this off reduces keyboard focus visibility."
+        },
+        "minorcellTheme.appearance.shadows": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "order": 3,
+          "description": "Show widget and scrollbar shadows in both Minorcell themes."
         },
         "minorcellTheme.dark.background": {
           "type": "string",

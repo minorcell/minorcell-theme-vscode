@@ -12,6 +12,18 @@ assert.deepEqual(
   manifest.contributes.themes.map((theme) => theme.uiTheme).sort(),
   ['vs', 'vs-dark']
 );
+assert.equal(
+  manifest.contributes.configuration.properties[
+    'minorcellTheme.appearance.borders'
+  ].default,
+  true
+);
+assert.equal(
+  manifest.contributes.configuration.properties[
+    'minorcellTheme.appearance.shadows'
+  ].default,
+  true
+);
 
 for (const theme of manifest.contributes.themes) {
   const themePath = path.join(root, theme.path);

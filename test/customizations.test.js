@@ -3,13 +3,40 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
 const {
+  BORDER_COLOR_KEYS,
   OWNED_TOKEN_KEYS,
   OWNED_WORKBENCH_KEYS,
+  SHADOW_COLOR_KEYS,
+  buildAppearanceOverrides,
   buildOverrides,
   mergeSemanticSection,
   mergeThemeSection,
   readExplicitColors
 } = require('../src/customizations');
+
+test('appearance decorations are enabled by default', () => {
+  assert.deepEqual(
+    buildAppearanceOverrides({ borders: true, shadows: true }),
+    {}
+  );
+});
+
+test('disabled borders become transparent without disabling shadows', () => {
+  const result = buildAppearanceOverrides({ borders: false, shadows: true });
+
+  assert.equal(Object.keys(result).length, BORDER_COLOR_KEYS.length);
+  assert.ok(BORDER_COLOR_KEYS.every((key) => result[key] === '#00000000'));
+  assert.ok(SHADOW_COLOR_KEYS.every((key) => result[key] === undefined));
+});
+
+test('disabled shadows become transparent without disabling borders', () => {
+  const result = buildAppearanceOverrides({ borders: true, shadows: false });
+
+  assert.deepEqual(
+    result,
+    Object.fromEntries(SHADOW_COLOR_KEYS.map((key) => [key, '#00000000']))
+  );
+});
 
 test('readExplicitColors returns only explicitly configured global colors', () => {
   const values = {
