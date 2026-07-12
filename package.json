@@ -1,0 +1,299 @@
+{
+  "name": "minorcell-theme",
+  "displayName": "Minorcell Theme",
+  "description": "A minimal, customizable VS Code theme that follows the operating system appearance.",
+  "version": "0.1.0",
+  "publisher": "minorcell",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "keywords": [
+    "theme",
+    "dark theme",
+    "light theme",
+    "system theme",
+    "customizable"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:minorcellTheme.openSettings",
+    "onCommand:minorcellTheme.configureSystemSync",
+    "onCommand:minorcellTheme.resetColors"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Minorcell Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/minorcell-dark-color-theme.json"
+      },
+      {
+        "label": "Minorcell Light",
+        "uiTheme": "vs",
+        "path": "./themes/minorcell-light-color-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "minorcellTheme.openSettings",
+        "title": "Open Theme Settings",
+        "category": "Minorcell Theme"
+      },
+      {
+        "command": "minorcellTheme.configureSystemSync",
+        "title": "Configure System Theme Sync",
+        "category": "Minorcell Theme"
+      },
+      {
+        "command": "minorcellTheme.resetColors",
+        "title": "Reset Custom Colors",
+        "category": "Minorcell Theme"
+      }
+    ],
+    "configuration": {
+      "title": "Minorcell Theme",
+      "properties": {
+        "minorcellTheme.followSystem": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "order": 1,
+          "description": "Automatically use Minorcell Light or Minorcell Dark when the operating system appearance changes."
+        },
+        "minorcellTheme.dark.background": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#202020",
+          "scope": "application",
+          "order": 10,
+          "description": "Dark theme editor and terminal background."
+        },
+        "minorcellTheme.dark.surface": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#1d1d1d",
+          "scope": "application",
+          "order": 11,
+          "description": "Dark theme side bar, title bar, inputs, and widget surface."
+        },
+        "minorcellTheme.dark.foreground": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#d4d4d4",
+          "scope": "application",
+          "order": 12,
+          "description": "Dark theme primary text color."
+        },
+        "minorcellTheme.dark.muted": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#7f848e",
+          "scope": "application",
+          "order": 13,
+          "description": "Dark theme secondary text and inactive controls."
+        },
+        "minorcellTheme.dark.accent": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#61afef",
+          "scope": "application",
+          "order": 14,
+          "description": "Dark theme focus, link, badge, and progress accent."
+        },
+        "minorcellTheme.dark.comment": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#7f848e",
+          "scope": "application",
+          "order": 20,
+          "description": "Dark theme comments."
+        },
+        "minorcellTheme.dark.keyword": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#c678dd",
+          "scope": "application",
+          "order": 21,
+          "description": "Dark theme language keywords."
+        },
+        "minorcellTheme.dark.string": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#98c379",
+          "scope": "application",
+          "order": 22,
+          "description": "Dark theme strings."
+        },
+        "minorcellTheme.dark.number": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#d19a66",
+          "scope": "application",
+          "order": 23,
+          "description": "Dark theme numbers and constants."
+        },
+        "minorcellTheme.dark.function": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#61afef",
+          "scope": "application",
+          "order": 24,
+          "description": "Dark theme functions and methods."
+        },
+        "minorcellTheme.dark.type": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#e5c07b",
+          "scope": "application",
+          "order": 25,
+          "description": "Dark theme classes, types, and enums."
+        },
+        "minorcellTheme.light.background": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#ffffff",
+          "scope": "application",
+          "order": 30,
+          "description": "Light theme editor and terminal background."
+        },
+        "minorcellTheme.light.surface": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#f6f8fa",
+          "scope": "application",
+          "order": 31,
+          "description": "Light theme side bar, title bar, inputs, and widget surface."
+        },
+        "minorcellTheme.light.foreground": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#24292f",
+          "scope": "application",
+          "order": 32,
+          "description": "Light theme primary text color."
+        },
+        "minorcellTheme.light.muted": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#6e7781",
+          "scope": "application",
+          "order": 33,
+          "description": "Light theme secondary text and inactive controls."
+        },
+        "minorcellTheme.light.accent": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#0969da",
+          "scope": "application",
+          "order": 34,
+          "description": "Light theme focus, link, badge, and progress accent."
+        },
+        "minorcellTheme.light.comment": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#6e7781",
+          "scope": "application",
+          "order": 40,
+          "description": "Light theme comments."
+        },
+        "minorcellTheme.light.keyword": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#8250df",
+          "scope": "application",
+          "order": 41,
+          "description": "Light theme language keywords."
+        },
+        "minorcellTheme.light.string": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#116329",
+          "scope": "application",
+          "order": 42,
+          "description": "Light theme strings."
+        },
+        "minorcellTheme.light.number": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#953800",
+          "scope": "application",
+          "order": 43,
+          "description": "Light theme numbers and constants."
+        },
+        "minorcellTheme.light.function": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#0969da",
+          "scope": "application",
+          "order": 44,
+          "description": "Light theme functions and methods."
+        },
+        "minorcellTheme.light.type": {
+          "type": "string",
+          "format": "color-hex",
+          "pattern": "^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$",
+          "patternErrorMessage": "Use a hexadecimal color such as #61afef or #61afef80.",
+          "default": "#9a6700",
+          "scope": "application",
+          "order": 45,
+          "description": "Light theme classes, types, and enums."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/check-manifest.js"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.2"
+  }
+}
