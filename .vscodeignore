@@ -2,6 +2,8 @@
 .vscode/**
 node_modules/**
 assets/icon-source.svg
+assets/dark.png
+assets/light.png
 scripts/**
 test/**
 *.vsix
