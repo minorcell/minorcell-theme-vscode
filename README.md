@@ -21,6 +21,16 @@ MIT license is preserved in `THIRD_PARTY_NOTICES.md`.
 - live updates without reloading the editor
 - commands to open settings, configure system sync, and reset custom colors
 
+## Preview
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/minorcell/minorcell-theme-vscode/main/assets/dark.png" alt="Minorcell Dark preview" width="640">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/minorcell/minorcell-theme-vscode/main/assets/light.png" alt="Minorcell Light preview" width="640">
+</p>
+
 ## Use
 
 After installation, the extension configures these VS Code user settings once:
